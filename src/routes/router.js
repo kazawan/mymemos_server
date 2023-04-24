@@ -3,7 +3,7 @@ const router = express.Router()
 const login =require('./login')
 const isAuth = require('./isAuth')
 const register = require('./register')
-const {todo_all,todo_user,addtodo} =require ('./todo')
+const {todo_all,todo_user,addtodo,newUser_todoListCreate} =require ('./todo')
 const routerList = [
     {
         path:'/one',
