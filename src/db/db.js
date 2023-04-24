@@ -32,18 +32,47 @@ db.run(`create table if not exists TODO (id INTEGER PRIMARY KEY AUTOINCREMENT,us
 })
 
 let todo = {
-    "2023-4-19":{
-        todo:[
+    "2023-4-19": {
+        todo: [
             {
-                id:1,
-                title:'test',
+                id: 1,
+                content: 'test',
             },
             {
-                id:2,
-                title:'test2',
+                id: 2,
+                content: 'test2',
             }
         ]
     },
+}
+
+let todo2 = {
+    "2023-4-26": {
+        todo: [
+            {
+                id: 1,
+                content: 'test',
+            },
+            {
+                id: 2,
+                content: 'test2',
+            }
+        ]
+    },
+    "2023-4-19": {
+        todo: [
+            {
+                id: 1,
+                content: 'test',
+            },
+            {
+                id: 2,
+                content: 'test2',
+            }
+        ]
+    },
+
+
 }
 
 // db.run(`insert into TODO (username,json) values(?,?)`, ['kazawan', JSON.stringify(todo)], (err) => {
@@ -58,11 +87,11 @@ let todo = {
  * todo 测试用
  * todo 当有用户新建账号时，需要在TODO表中插入一条数据包含欢迎信息
  */
-db.all (`select * from TODO`, (err, rows) => {
-    let temp = JSON.parse(rows[0].json)
-    console.log (rows[0].json)
-    console.log(temp['2023-4-19'].todo)
-})
+// db.all (`select * from TODO`, (err, rows) => {
+//     let temp = JSON.parse(rows[0].json)
+//     // console.log (rows[0].json)
+//     // console.log(temp['2023-4-19'].todo)
+// })
 
 
 // db.get(`select * from USER where username = ? `, [''] , (err,data)=>{
@@ -72,6 +101,14 @@ db.all (`select * from TODO`, (err, rows) => {
 //         console.log(data)
 //     }
 // })
+
+db.run(`update TODO set json =? where username =?`, [JSON.stringify(todo), 'kazawan'], (err) => {
+    if (err) {
+        console.log(err)
+    } else {
+        console.log('update success')
+    }
+})
 
 
 

@@ -2,6 +2,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const router = require('../routes/router')
 const jwtInit = require('../jwt/jwtinit')
+const jwtverify = require('../jwt/jwtverify')
 const log = (req, res, next) => {
     console.log('this is 中间件')
     next()

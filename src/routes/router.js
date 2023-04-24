@@ -3,7 +3,7 @@ const router = express.Router()
 const login =require('./login')
 const isAuth = require('./isAuth')
 const register = require('./register')
-const {todo_all} =require ('./todo')
+const {todo_all,todo_user,addtodo} =require ('./todo')
 const routerList = [
     {
         path:'/one',
@@ -47,9 +47,19 @@ const routerList = [
         }
     },
     {
-        path:'/todo/all',
+        path:'/todo',
         method:'post',
         handle:todo_all,
+    },
+    {
+        path:'/todo_user',
+        method:'post',
+        handle:todo_user,
+    },
+    {
+        path:'/addtodo',
+        method:'post',
+        handle:addtodo,
     }
 
 ]
