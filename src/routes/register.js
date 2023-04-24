@@ -1,5 +1,6 @@
 const {dbinsert,dbFindUsername} = require('../db/crud')
-
+const {newUser_todoListCreate} = require('../routes/todo')
+const {newUser_dbInsert} = require('../db/todolist')
 const register = async (req,res)=>{
     //todo sqlite here
     // console.log('insert')
@@ -13,6 +14,7 @@ const register = async (req,res)=>{
         })
     }else{
         await dbinsert('USER',username,password)
+        await newUser_dbInsert(username)
         res.send({
             code:200,
             msg:'注册成功'

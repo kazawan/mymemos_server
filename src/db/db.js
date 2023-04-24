@@ -85,7 +85,9 @@ let todo2 = {
 
 /**
  * todo 测试用
- * todo 当有用户新建账号时，需要在TODO表中插入一条数据包含欢迎信息
+ * //todo 当有用户新建账号时，需要在TODO表中插入一条数据包含欢迎信息
+ * //todo 新建账号时，需要在TODO表中插入一条数据
+ * todo 增加删除todo
  */
 // db.all (`select * from TODO`, (err, rows) => {
 //     let temp = JSON.parse(rows[0].json)

@@ -1,6 +1,7 @@
 const { todolist_dbAll } = require('../db/todolist')
 const { todolist_dbUser } = require('../db/todolist')
-const {todolistAdd_dbUpdate} = require('../db/todolist')
+const { todolistAdd_dbUpdate } = require('../db/todolist')
+const { newUser_dbInsert } = require('../db/todolist')
 /**
  * * 获取所有todo
  * todo 添加增加todo的功能
@@ -22,38 +23,51 @@ const todo_all = async (req, res) => {
 const todo_user = async (req, res) => {
     let temp = await todolist_dbUser(req.body.username)
     // console.log(temp)
-    if(temp === undefined){
+    if (temp === undefined) {
         res.send({
             code: 400,
             msg: 'fail',
             data: 'no user'
         })
         return
-    }else{
+    } else {
         res.send({
             code: 200,
             msg: 'success',
-            data:temp
+            data: temp
         })
     }
-    
+
 }
 
 /**
  * * 添加todo
  */
 const addtodo = async (req, res) => {
-    console.log()
+    // console.log()
     let todo = JSON.stringify(req.body.json)
-    let temp = await todolistAdd_dbUpdate(req.body.username,todo)
+    let temp = await todolistAdd_dbUpdate(req.body.username, todo)
     res.send(temp)
     // console.log(todo)
     //  todolistAdd_dbUpdate(req.body.username,todo)
     //     .then(res=>console.log(res))
 
 }
+
+
+/**
+ * 新建用户todo
+ */
+const newUser_todoListCreate = async (req, res) => {
+    const username = req.body.username
+    let temp = await newUser_dbInsert(username)
+    res.send(temp)
+
+
+}
 module.exports = {
     todo_all,
     todo_user,
     addtodo,
+    newUser_todoListCreate,
 }
